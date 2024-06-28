@@ -1,0 +1,9 @@
+. "$(dirname -- "$0")/_/husky.sh"
+
+declare ROOT_DIR=$(git rev-parse --show-toplevel)
+declare PHOTOS_CHANGED=$(git show --name-only -r --stat --oneline origin/HEAD..HEAD | grep '^photos/')
+
+npm run lint
+npm run build
+
+if [[ $PHOTOS_CHANGED ]]; then bash ${ROOT_DIR}/script/organize_photos.sh -c; fi
