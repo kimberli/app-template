@@ -1,6 +1,11 @@
 # App Template
 Welcome to my app template!
 
+## Usage
+```bash
+npx create-next-app@latest --example "https://github.com/kimberli/app-template"
+```
+
 ## Requirements
 Node 18+ for the application.
 
