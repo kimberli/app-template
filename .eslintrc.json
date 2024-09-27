@@ -7,14 +7,17 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "ecmaVersion": "latest",
+    "project": "./tsconfig.json",
+    "sourceType": "module"
   },
   "plugins": [
     "@typescript-eslint",
     "import",
-    "unused-imports",
+    "prettier",
     "react",
-    "prettier"
+    "simple-import-sort",
+    "unused-imports"
   ],
   "root": true,
   "rules": {
@@ -39,22 +42,9 @@
         "caughtErrorsIgnorePattern": "^_"
       }
     ],
-    "import/order": [
-      "error",
-      {
-        "groups": [
-          "external",
-          "index",
-          "sibling",
-          "parent",
-          "internal",
-          "builtin",
-          "object",
-          "type"
-        ],
-        "newlines-between": "always"
-      }
-    ],
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
     "prettier/prettier": "error",
     "react/function-component-definition": [
         2,
@@ -64,10 +54,8 @@
         }
     ],
     "react/prop-types": "error",
-    "sort-imports": [
-      "error",
-      { "ignoreCase": true, "allowSeparatedGroups": true }
-    ],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
     "unused-imports/no-unused-imports": "error"
   }
 }
