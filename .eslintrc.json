@@ -45,6 +45,7 @@
     "import/first": "error",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
+    "no-restricted-imports": ["error"],
     "prettier/prettier": "error",
     "react/function-component-definition": [
         2,
