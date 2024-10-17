@@ -1,9 +1,21 @@
 {
   "extends": [
     "next",
-    "plugin:import/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier"
+  ],
+  "ignorePatterns": [
+    "*.config.js"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "components/**/*"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -13,8 +25,8 @@
   },
   "plugins": [
     "@typescript-eslint",
-    "import",
     "prettier",
+    "promise",
     "react",
     "simple-import-sort",
     "unused-imports"
@@ -45,14 +57,27 @@
     "import/first": "error",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
-    "no-restricted-imports": ["error"],
+    "no-console": [
+      "error"
+    ],
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+         // TODO: add paths here to restrict importing from external libraries
+        ],
+        "patterns": [
+        ]
+      }
+    ],
     "prettier/prettier": "error",
+    "promise/catch-or-return": "error",
     "react/function-component-definition": [
-        2,
-        {
-            "namedComponents": "arrow-function",
-            "unnamedComponents": "arrow-function"
-        }
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
     ],
     "react/prop-types": "error",
     "simple-import-sort/imports": "error",
