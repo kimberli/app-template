@@ -1,0 +1,30 @@
+import { TransactionDB } from "@app/api/db";
+import { type Logger } from "@app/api/utils/logger";
+import { type Context } from "hono";
+import { z } from "zod";
+
+export const EnvSchema = z.object({
+  VITE_APP_HOST: z.string().describe("Main application frontend hostname"),
+  VITE_APP_URL: z.string().describe("Main application frontend URL"),
+  POSTGRES_URL: z.string(),
+  VITE_SUPABASE_URL: z.string(),
+  VITE_SUPABASE_ANON_KEY: z.string(),
+  SUPABASE_SERVICE_ROLE_KEY: z.string(),
+  AXIOM_TOKEN: z.string(),
+  AXIOM_DATASET: z.string(),
+});
+
+export type Env = z.infer<typeof EnvSchema> & {};
+
+export type EnvBindings = {
+  Bindings: Env;
+  Variables: {
+    db: TransactionDB;
+    userId?: string;
+    profileId?: string;
+    authOptional?: boolean;
+    log: Logger;
+  };
+};
+
+export type EnvContext = Context<EnvBindings>;

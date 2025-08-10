@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1727248074267,
+      "tag": "0000_initial_profiles",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1754799119577,
+      "tag": "0001_add_timestamps_profiles",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1754801682508,
+      "tag": "0002_add_color_scheme",
+      "breakpoints": true
+    }
+  ]
+}

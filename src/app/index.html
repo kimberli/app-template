@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>App</title>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/logo/logo.svg" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta property="og:title" content="App" />
+  <meta property="og:description" content="Template app description." />
+  <meta property="og:site_name" content="App" />
+  <meta property="og:image" content="/assets/banner.png" />
+  <meta property="og:url" content="TODO" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="App" />
+  <meta name="twitter:description" content="Template app description." />
+  <meta name="twitter:image" content="/assets/banner.png" />
+  <script>
+    (function () {
+      function getInitialColorMode() {
+        const persistedColorPreference = window.localStorage.getItem('theme');
+        const hasPersistedPreference = typeof persistedColorPreference === 'string';
+        if (hasPersistedPreference) {
+          return persistedColorPreference;
+        }
+        const mql = window.matchMedia('(prefers-color-scheme: dark)');
+        const hasMediaQueryPreference = typeof mql.matches === 'boolean';
+        if (hasMediaQueryPreference) {
+          return mql.matches ? 'dark' : 'light';
+        }
+        return 'light';
+      }
+      const colorMode = getInitialColorMode();
+      document.documentElement.classList.add(colorMode);
+    })();
+  </script>
+</head>
+
+<body className="text-foreground select-none">
+  <div id="root"></div>
+  <script type="module" src="/main.tsx"></script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+import AppPage from "@app/components/AppPage";
+import Navbar from "@app/components/ui/Navbar";
+import { useUser } from "@app/providers/User";
+import React from "react";
+
+interface PublicLayoutProps {
+  children: React.ReactNode;
+}
+
+const PublicLayout: React.FC<PublicLayoutProps> = ({ children }) => {
+  const { user } = useUser();
+  const isAuthenticated = user && user.id;
+
+  return (
+    <div className="flex flex-col w-full h-dvh overflow-hidden">
+      {!isAuthenticated && <Navbar />}
+      <div className="flex flex-row flex-1 relative overflow-y-auto">
+        <div className="flex-1 overflow-y-auto">
+          <AppPage enforceAuth={false}>{children}</AppPage>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default PublicLayout;
