@@ -1,0 +1,37 @@
+{
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "name": "app",
+    "main": "api/index.ts",
+    "compatibility_date": "2025-04-03",
+    "compatibility_flags": [
+        "nodejs_compat"
+    ],
+    "keep_vars": true,
+    "assets": {
+        "not_found_handling": "single-page-application"
+    },
+    "observability": {
+        "enabled": true,
+        "head_sampling_rate": 1,
+    },
+    "env": {
+        "staging": {
+            "observability": {
+                "enabled": true,
+                "head_sampling_rate": 1,
+            },
+            "vars": {
+                "ENVIRONMENT": "staging"
+            }
+        },
+        "prod": {
+            "observability": {
+                "enabled": true,
+                "head_sampling_rate": 1,
+            },
+            "vars": {
+                "ENVIRONMENT": "prod"
+            }
+        }
+    }
+}

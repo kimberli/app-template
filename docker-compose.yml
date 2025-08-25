@@ -19,8 +19,6 @@ services:
       - ./.env.prod:/app/.env.prod
     mem_limit: "6G"
     cpus: 4
-    ports:
-      - 3000:3000
     develop:
       watch:
         - action: sync
