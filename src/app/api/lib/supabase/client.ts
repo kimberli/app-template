@@ -15,10 +15,7 @@ export const createClient = async (
   c: EnvContext,
   useAdmin: boolean = false,
 ): Promise<SupabaseClient> => {
-  const requestHost = new URL(c.req.url).hostname;
-  const domainParts = requestHost.split(".");
-  const baseDomain =
-    domainParts.length > 1 ? domainParts.slice(-2).join(".") : requestHost;
+  const requestHost = c.env.VITE_APP_HOST;
 
   return createServerClient(
     c.env.VITE_SUPABASE_URL!,
@@ -35,7 +32,7 @@ export const createClient = async (
               sameSite: "None",
               secure: true,
               httpOnly: true,
-              domain: baseDomain,
+              domain: requestHost,
               path: "/",
             };
             setCookie(c, name, value, secureOptions);
